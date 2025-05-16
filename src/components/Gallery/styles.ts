@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Cores } from '../../styles'
+import { colors } from '../../styles'
 
 export const Items = styled.ul`
   display: flex;
@@ -22,9 +22,10 @@ export const Action = styled.div`
 
 export const Item = styled.li`
   position: relative;
+  cursor: zoom-in;
 
   > img {
-    border: 2px solid ${Cores.branca};
+    border: 2px solid ${colors.white};
     border-radius: 8px;
     width: 150px;
     height: 150px;
@@ -35,7 +36,6 @@ export const Item = styled.li`
     ${Action} {
       opacity: 1;
       transition: opacity 0.5s ease;
-      cursor: pointer;
     }
   }
 `
@@ -80,6 +80,8 @@ export const ModalContent = styled.div`
 
     img {
       cursor: pointer;
+      height: 16px;
+      width: 16px;
     }
   }
 

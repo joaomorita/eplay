@@ -1,28 +1,9 @@
 import { useState } from 'react'
 import Section from '../Section'
-import { Items, Item, Action, Modal, ModalContent } from './styles'
-import zelda from '../../assets/zelda.png'
-import hogwarts from '../../assets/fundo-hogwarts.png'
-import spider from '../../assets/banner-homem-aranha.png'
 import playImg from '../../assets/botao-play.png'
 import zoomImg from '../../assets/mais-zoom.png'
 import closeBtn from '../../assets/close_btn.png'
-import { GalleryItem } from '../../pages/Home'
-
-const mock: GalleryItem[] = [
-  {
-    type: 'image',
-    url: spider
-  },
-  {
-    type: 'image',
-    url: hogwarts
-  },
-  {
-    type: 'video',
-    url: 'https://www.youtube.com/embed/2SNF4M_v7wc?si=lR5wt25vKupjoQPr'
-  }
-]
+import * as S from './styles'
 
 type Props = {
   defaultCover: string
@@ -61,9 +42,9 @@ const Gallery = ({ defaultCover, name, items }: Props) => {
   return (
     <>
       <Section title="Galeria" background="black">
-        <Items>
+        <S.Items>
           {items.map((media, index) => (
-            <Item
+            <S.Item
               key={media.url}
               onClick={() => {
                 setModal({
@@ -77,18 +58,18 @@ const Gallery = ({ defaultCover, name, items }: Props) => {
                 src={getMediaCover(media)}
                 alt={`Mídia ${index + 1} de ${name}`}
               />
-              <Action>
+              <S.Action>
                 <img
                   src={getMediaIcon(media)}
                   alt="Clique para maximizar a mídia"
                 />
-              </Action>
-            </Item>
+              </S.Action>
+            </S.Item>
           ))}
-        </Items>
+        </S.Items>
       </Section>
-      <Modal className={modal.isVisible ? 'visible' : ''}>
-        <ModalContent className="container">
+      <S.Modal className={modal.isVisible ? 'visible' : ''}>
+        <S.ModalContent className="container">
           <header>
             <h4>{name}</h4>
             <img
@@ -104,14 +85,14 @@ const Gallery = ({ defaultCover, name, items }: Props) => {
           ) : (
             <iframe frameBorder={0} src={modal.url} />
           )}
-        </ModalContent>
+        </S.ModalContent>
         <div
           onClick={() => {
             closeModal()
           }}
           className="overlay"
         ></div>
-      </Modal>
+      </S.Modal>
     </>
   )
 }
